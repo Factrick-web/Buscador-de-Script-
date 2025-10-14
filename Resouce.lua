@@ -1,5 +1,5 @@
--- 💫 Factrick Cheat Panel v5 - By GPT-5
--- Panel elegante con scroll, buscador, aviso de key y anuncio inicial
+-- 💫 Factrick Cheat Panel 
+
 
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
@@ -56,6 +56,7 @@ discordBtn.Font = Enum.Font.GothamBold
 discordBtn.TextSize = 14
 discordBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 discordBtn.Parent = anuncioFrame
+
 local dcCorner = Instance.new("UICorner")
 dcCorner.CornerRadius = UDim.new(0, 8)
 dcCorner.Parent = discordBtn
@@ -70,22 +71,23 @@ tiktokBtn.Font = Enum.Font.GothamBold
 tiktokBtn.TextSize = 14
 tiktokBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 tiktokBtn.Parent = anuncioFrame
+
 local tkCorner = Instance.new("UICorner")
 tkCorner.CornerRadius = UDim.new(0, 8)
 tkCorner.Parent = tiktokBtn
 
 discordBtn.MouseButton1Click:Connect(function()
-	setclipboard("https://discord.gg/R2zaDxaqm")
-	discordBtn.Text = "✅ Copiado!"
-	task.wait(1.5)
-	discordBtn.Text = "🌐 Discord"
+    setclipboard("https://discord.gg/R2zaDxaqm")
+    discordBtn.Text = "✅ Copiado!"
+    task.wait(1.5)
+    discordBtn.Text = "🌐 Discord"
 end)
 
 tiktokBtn.MouseButton1Click:Connect(function()
-	setclipboard("https://www.tiktok.com/@sm.fxp7.23?_t=ZS-90VbzkQBxOH&_r=1")
-	tiktokBtn.Text = "✅ Copiado!"
-	task.wait(1.5)
-	tiktokBtn.Text = "🎵 TikTok"
+    setclipboard("https://www.tiktok.com/@sm.fxp7.23?_t=ZS-90VbzkQBxOH&_r=1")
+    tiktokBtn.Text = "✅ Copiado!"
+    task.wait(1.5)
+    tiktokBtn.Text = "🎵 TikTok"
 end)
 
 -------------------------------------------------
@@ -103,8 +105,8 @@ mainFrame.Visible = false
 mainFrame.Parent = screenGui
 
 task.delay(7, function()
-	anuncioFrame:Destroy()
-	mainFrame.Visible = true
+    anuncioFrame:Destroy()
+    mainFrame.Visible = true
 end)
 
 local corner = Instance.new("UICorner")
@@ -121,8 +123,9 @@ closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 closeBtn.Font = Enum.Font.GothamBold
 closeBtn.TextSize = 20
 closeBtn.Parent = mainFrame
+
 closeBtn.MouseButton1Click:Connect(function()
-	mainFrame.Visible = false
+    mainFrame.Visible = false
 end)
 
 -- Título RGB
@@ -136,11 +139,11 @@ title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.Parent = mainFrame
 
 task.spawn(function()
-	local hue = 0
-	while task.wait(0.05) do
-		hue = (hue + 2) % 360
-		title.TextColor3 = Color3.fromHSV(hue / 360, 1, 1)
-	end
+    local hue = 0
+    while task.wait(0.05) do
+        hue = (hue + 2) % 360
+        title.TextColor3 = Color3.fromHSV(hue / 360, 1, 1)
+    end
 end)
 
 -- Subtítulo
@@ -192,160 +195,166 @@ layout.Parent = scrollFrame
 
 -- Scripts
 local scripts = {
-	{
-		Name = "Factrick Cheat",
-		KeyMessage = true,
-		Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/Factrick-web/factrick-public/refs/heads/main/source.lua"))()]]
-	},
-	{
-		Name = "Miranda Hub",
-		Code = [[loadstring(game:HttpGet("https://pastefy.app/JJVhs3rK/raw"))()]]
-	},
-	{
-		Name = "Light Hub",
-		Code = [[loadstring(game:HttpGet("https://pastefy.app/B0oeOAsg/raw"))()]]
-	},
-	{
-		Name = "Kurd Hub",
-		Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/DupeNews/sab-script-fe8c23/main/Kurdhub.lua"))()]]
-	},
-	{
-		Name = "Chili Hub",
-		Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()]]
-	},
+    {
+        Name = "Factrick Cheat",
+        KeyMessage = true,
+        Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/Factrick-web/factrick-public/refs/heads/main/source.lua"))()]]
+    },
+    {
+        Name = "Miranda Hub",
+        Code = [[loadstring(game:HttpGet("https://pastefy.app/JJVhs3rK/raw"))()]]
+    },
+    {
+        Name = "Light Hub",
+        Code = [[loadstring(game:HttpGet("https://pastefy.app/B0oeOAsg/raw"))()]]
+    },
+    {
+        Name = "Kurd Hub",
+        Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/DupeNews/sab-script-fe8c23/main/Kurdhub.lua"))()]]
+    },
+    {
+        Name = "Chili Hub",
+        Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()]]
+    },
+    {
+        Name = "Nameless Hub",
+        Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/ily123950/Vulkan/refs/heads/main/Tr"))()]]
+    },
 }
 
 -- Popup de key
 local function showKeyPopup(callback)
-	local popup = Instance.new("Frame")
-	popup.Size = UDim2.new(0, 260, 0, 140)
-	popup.Position = UDim2.new(0.5, -130, 0.5, -70)
-	popup.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-	popup.BorderColor3 = Color3.fromRGB(0, 255, 255)
-	popup.BorderSizePixel = 2
-	popup.Parent = screenGui
+    local popup = Instance.new("Frame")
+    popup.Size = UDim2.new(0, 260, 0, 140)
+    popup.Position = UDim2.new(0.5, -130, 0.5, -70)
+    popup.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    popup.BorderColor3 = Color3.fromRGB(0, 255, 255)
+    popup.BorderSizePixel = 2
+    popup.Parent = screenGui
 
-	local corner = Instance.new("UICorner")
-	corner.CornerRadius = UDim.new(0, 10)
-	corner.Parent = popup
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 10)
+    corner.Parent = popup
 
-	local title = Instance.new("TextLabel")
-	title.Size = UDim2.new(1, 0, 0, 40)
-	title.BackgroundTransparency = 1
-	title.Text = "🔑 FACTRICK KEY"
-	title.Font = Enum.Font.GothamBold
-	title.TextSize = 20
-	title.TextColor3 = Color3.fromRGB(255, 255, 255)
-	title.Parent = popup
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0, 40)
+    title.BackgroundTransparency = 1
+    title.Text = "🔑 FACTRICK KEY"
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 20
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.Parent = popup
 
-	local msg = Instance.new("TextLabel")
-	msg.Size = UDim2.new(1, -20, 0, 40)
-	msg.Position = UDim2.new(0, 10, 0, 50)
-	msg.BackgroundTransparency = 1
-	msg.Text = "La key es: keygratis1"
-	msg.Font = Enum.Font.Gotham
-	msg.TextSize = 16
-	msg.TextColor3 = Color3.fromRGB(0, 255, 200)
-	msg.Parent = popup
+    local msg = Instance.new("TextLabel")
+    msg.Size = UDim2.new(1, -20, 0, 40)
+    msg.Position = UDim2.new(0, 10, 0, 50)
+    msg.BackgroundTransparency = 1
+    msg.Text = "La key es: keygratis1"
+    msg.Font = Enum.Font.Gotham
+    msg.TextSize = 16
+    msg.TextColor3 = Color3.fromRGB(0, 255, 200)
+    msg.Parent = popup
 
-	local okBtn = Instance.new("TextButton")
-	okBtn.Size = UDim2.new(0, 100, 0, 30)
-	okBtn.Position = UDim2.new(0.5, -50, 1, -40)
-	okBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 200)
-	okBtn.Text = "Entendido"
-	okBtn.Font = Enum.Font.GothamBold
-	okBtn.TextSize = 14
-	okBtn.TextColor3 = Color3.fromRGB(25, 25, 25)
-	okBtn.Parent = popup
+    local okBtn = Instance.new("TextButton")
+    okBtn.Size = UDim2.new(0, 100, 0, 30)
+    okBtn.Position = UDim2.new(0.5, -50, 1, -40)
+    okBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 200)
+    okBtn.Text = "Entendido"
+    okBtn.Font = Enum.Font.GothamBold
+    okBtn.TextSize = 14
+    okBtn.TextColor3 = Color3.fromRGB(25, 25, 25)
+    okBtn.Parent = popup
 
-	local c2 = Instance.new("UICorner")
-	c2.CornerRadius = UDim.new(0, 8)
-	c2.Parent = okBtn
+    local c2 = Instance.new("UICorner")
+    c2.CornerRadius = UDim.new(0, 8)
+    c2.Parent = okBtn
 
-	okBtn.MouseButton1Click:Connect(function()
-		popup:Destroy()
-		callback()
-	end)
+    okBtn.MouseButton1Click:Connect(function()
+        popup:Destroy()
+        callback()
+    end)
 end
 
 -- Crear tarjetas
 local function createScriptCard(scriptData)
-	local card = Instance.new("Frame")
-	card.Size = UDim2.new(1, 0, 0, 50)
-	card.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-	card.BorderSizePixel = 0
-	card.Parent = scrollFrame
+    local card = Instance.new("Frame")
+    card.Size = UDim2.new(1, 0, 0, 50)
+    card.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    card.BorderSizePixel = 0
+    card.Parent = scrollFrame
 
-	local c = Instance.new("UICorner")
-	c.CornerRadius = UDim.new(0, 8)
-	c.Parent = card
+    local c = Instance.new("UICorner")
+    c.CornerRadius = UDim.new(0, 8)
+    c.Parent = card
 
-	local name = Instance.new("TextLabel")
-	name.Size = UDim2.new(0.65, 0, 1, 0)
-	name.BackgroundTransparency = 1
-	name.Text = "💠 " .. scriptData.Name
-	name.Font = Enum.Font.GothamMedium
-	name.TextSize = 15
-	name.TextColor3 = Color3.fromRGB(255, 255, 255)
-	name.TextXAlignment = Enum.TextXAlignment.Left
-	name.Position = UDim2.new(0.05, 0, 0, 0)
-	name.Parent = card
+    local name = Instance.new("TextLabel")
+    name.Size = UDim2.new(0.65, 0, 1, 0)
+    name.BackgroundTransparency = 1
+    name.Text = "💠 " .. scriptData.Name
+    name.Font = Enum.Font.GothamMedium
+    name.TextSize = 15
+    name.TextColor3 = Color3.fromRGB(255, 255, 255)
+    name.TextXAlignment = Enum.TextXAlignment.Left
+    name.Position = UDim2.new(0.05, 0, 0, 0)
+    name.Parent = card
 
-	local button = Instance.new("TextButton")
-	button.Size = UDim2.new(0.25, 0, 0.6, 0)
-	button.Position = UDim2.new(0.7, 0, 0.2, 0)
-	button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-	button.Text = "Executar"
-	button.Font = Enum.Font.Gotham
-	button.TextSize = 13
-	button.TextColor3 = Color3.fromRGB(255, 255, 255)
-	button.BorderSizePixel = 0
-	button.Parent = card
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0.25, 0, 0.6, 0)
+    button.Position = UDim2.new(0.7, 0, 0.2, 0)
+    button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    button.Text = "Executar"
+    button.Font = Enum.Font.Gotham
+    button.TextSize = 13
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.BorderSizePixel = 0
+    button.Parent = card
 
-	local btnCorner = Instance.new("UICorner")
-	btnCorner.CornerRadius = UDim.new(0, 6)
-	btnCorner.Parent = button
+    local btnCorner = Instance.new("UICorner")
+    btnCorner.CornerRadius = UDim.new(0, 6)
+    btnCorner.Parent = button
 
-	button.MouseButton1Click:Connect(function()
-		local runCode = function()
-			button.Text = "Cargando..."
-			local ok, err = pcall(function()
-				local func = loadstring(scriptData.Code)
-				func()
-			end)
-			if ok then
-				button.Text = "Ejecutado"
-				button.BackgroundColor3 = Color3.fromRGB(80, 140, 80)
-			else
-				button.Text = "Error"
-				button.BackgroundColor3 = Color3.fromRGB(140, 60, 60)
-				warn(err)
-			end
-			task.wait(1.2)
-			button.Text = "Executar"
-			button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-		end
+    button.MouseButton1Click:Connect(function()
+        local runCode = function()
+            button.Text = "Cargando..."
+            local ok, err = pcall(function()
+                local func = loadstring(scriptData.Code)
+                func()
+            end)
+            if ok then
+                button.Text = "Ejecutado"
+                button.BackgroundColor3 = Color3.fromRGB(80, 140, 80)
+            else
+                button.Text = "Error"
+                button.BackgroundColor3 = Color3.fromRGB(140, 60, 60)
+                warn(err)
+            end
+            task.wait(1.2)
+            button.Text = "Executar"
+            button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+        end
 
-		if scriptData.KeyMessage then
-			showKeyPopup(runCode)
-		else
-			runCode()
-		end
-	end)
+        if scriptData.KeyMessage then
+            showKeyPopup(runCode)
+        else
+            runCode()
+        end
+    end)
 end
 
+-- Crear todas las tarjetas
 for _, s in ipairs(scripts) do
-	createScriptCard(s)
+    createScriptCard(s)
 end
 
+-- Función de búsqueda
 searchBox:GetPropertyChangedSignal("Text"):Connect(function()
-	local query = string.lower(searchBox.Text)
-	for _, card in ipairs(scrollFrame:GetChildren()) do
-		if card:IsA("Frame") then
-			local label = card:FindFirstChildOfClass("TextLabel")
-			if label then
-				card.Visible = (query == "" or string.find(string.lower(label.Text), query))
-			end
-		end
-	end
+    local query = string.lower(searchBox.Text)
+    for _, card in ipairs(scrollFrame:GetChildren()) do
+        if card:IsA("Frame") then
+            local label = card:FindFirstChildOfClass("TextLabel")
+            if label then
+                card.Visible = (query == "" or string.find(string.lower(label.Text), query))
+            end
+        end
+    end
 end)
