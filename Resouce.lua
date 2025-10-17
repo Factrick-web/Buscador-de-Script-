@@ -224,6 +224,9 @@ local scripts = {
         Name = "Eps1llon Hub",
         Code = [[loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/083f208b2d5d19c6b565190b0d2293c9.lua"))()]]
     },
+    {
+        Name = "Zzzz Hub",
+        Code = [[loadstring(game:HttpGet("https://pastefy.app/DHyT4Zoi/raw"))()]]
 }
 
 -- Popup de key
