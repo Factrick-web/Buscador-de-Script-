@@ -227,6 +227,7 @@ local scripts = {
     {
         Name = "Zzzz Hub",
         Code = [[loadstring(game:HttpGet("https://pastefy.app/DHyT4Zoi/raw"))()]]
+    },
 }
 
 -- Popup de key
