@@ -1,17 +1,15 @@
--- 💫 Factrick Cheat Panel 
-
-
+-- 💫 Factrick Cheat Panel (VERSIÓN CORREGIDA PARA EJECUTAR SCRIPTS)
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- GUI principal
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "FactrickCheatUI"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = playerGui
+screenGui.IgnoreGuiInset = true
 
 -------------------------------------------------
--- 📢 ANUNCIO INICIAL
+-- ANUNCIO (igual que antes)
 -------------------------------------------------
 local anuncioFrame = Instance.new("Frame")
 anuncioFrame.Size = UDim2.new(0, 360, 0, 220)
@@ -46,7 +44,6 @@ anuncioTexto.TextSize = 15
 anuncioTexto.TextColor3 = Color3.fromRGB(255, 255, 255)
 anuncioTexto.Parent = anuncioFrame
 
--- Botón Discord
 local discordBtn = Instance.new("TextButton")
 discordBtn.Size = UDim2.new(0, 140, 0, 35)
 discordBtn.Position = UDim2.new(0.5, -150, 1, -50)
@@ -61,7 +58,6 @@ local dcCorner = Instance.new("UICorner")
 dcCorner.CornerRadius = UDim.new(0, 8)
 dcCorner.Parent = discordBtn
 
--- Botón TikTok
 local tiktokBtn = Instance.new("TextButton")
 tiktokBtn.Size = UDim2.new(0, 140, 0, 35)
 tiktokBtn.Position = UDim2.new(0.5, 10, 1, -50)
@@ -77,21 +73,25 @@ tkCorner.CornerRadius = UDim.new(0, 8)
 tkCorner.Parent = tiktokBtn
 
 discordBtn.MouseButton1Click:Connect(function()
-    setclipboard("https://discord.gg/R2zaDxaqm")
-    discordBtn.Text = "✅ Copiado!"
-    task.wait(1.5)
-    discordBtn.Text = "🌐 Discord"
+    if setclipboard then
+        setclipboard("https://discord.gg/R2zaDxaqm")
+        discordBtn.Text = "✅ Copiado!"
+        task.wait(1.5)
+        discordBtn.Text = "🌐 Discord"
+    end
 end)
 
 tiktokBtn.MouseButton1Click:Connect(function()
-    setclipboard("https://www.tiktok.com/@sm.fxp7.23?_t=ZS-90VbzkQBxOH&_r=1")
-    tiktokBtn.Text = "✅ Copiado!"
-    task.wait(1.5)
-    tiktokBtn.Text = "🎵 TikTok"
+    if setclipboard then
+        setclipboard("https://www.tiktok.com/@sm.fxp7.23?_t=ZS-90VbzkQBxOH&_r=1")
+        tiktokBtn.Text = "✅ Copiado!"
+        task.wait(1.5)
+        tiktokBtn.Text = "🎵 TikTok"
+    end
 end)
 
 -------------------------------------------------
--- 🧩 PANEL PRINCIPAL
+-- PANEL PRINCIPAL
 -------------------------------------------------
 local mainFrame = Instance.new("Frame")
 mainFrame.Size = UDim2.new(0, 300, 0, 340)
@@ -113,7 +113,6 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = mainFrame
 
--- Botón cerrar
 local closeBtn = Instance.new("TextButton")
 closeBtn.Size = UDim2.new(0, 30, 0, 30)
 closeBtn.Position = UDim2.new(1, -35, 0, 5)
@@ -128,7 +127,6 @@ closeBtn.MouseButton1Click:Connect(function()
     mainFrame.Visible = false
 end)
 
--- Título RGB
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 35)
 title.BackgroundTransparency = 1
@@ -146,7 +144,6 @@ task.spawn(function()
     end
 end)
 
--- Subtítulo
 local subtitle = Instance.new("TextLabel")
 subtitle.Size = UDim2.new(1, 0, 0, 20)
 subtitle.Position = UDim2.new(0, 0, 0, 35)
@@ -157,7 +154,6 @@ subtitle.TextSize = 13
 subtitle.TextColor3 = Color3.fromRGB(200, 200, 200)
 subtitle.Parent = mainFrame
 
--- Buscador
 local searchBox = Instance.new("TextBox")
 searchBox.Size = UDim2.new(0.9, 0, 0, 30)
 searchBox.Position = UDim2.new(0.05, 0, 0, 60)
@@ -174,7 +170,6 @@ local searchCorner = Instance.new("UICorner")
 searchCorner.CornerRadius = UDim.new(0, 8)
 searchCorner.Parent = searchBox
 
--- Scroll principal
 local scrollFrame = Instance.new("ScrollingFrame")
 scrollFrame.Size = UDim2.new(0.9, 0, 0.68, 0)
 scrollFrame.Position = UDim2.new(0.05, 0, 0, 95)
@@ -193,7 +188,7 @@ layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 layout.SortOrder = Enum.SortOrder.LayoutOrder
 layout.Parent = scrollFrame
 
--- Scripts
+-- SCRIPTS: lista de scripts (siempre que quieras agregar uno ponlo aquí)
 local scripts = {
     {
         Name = "Factrick Cheat",
@@ -230,7 +225,7 @@ local scripts = {
     },
 }
 
--- Popup de key
+-- POPUP KEY (igual)
 local function showKeyPopup(callback)
     local popup = Instance.new("Frame")
     popup.Size = UDim2.new(0, 260, 0, 140)
@@ -283,7 +278,7 @@ local function showKeyPopup(callback)
     end)
 end
 
--- Crear tarjetas
+-- Crear tarjeta por script (con ejecución arreglada)
 local function createScriptCard(scriptData)
     local card = Instance.new("Frame")
     card.Size = UDim2.new(1, 0, 0, 50)
@@ -322,20 +317,41 @@ local function createScriptCard(scriptData)
     btnCorner.Parent = button
 
     button.MouseButton1Click:Connect(function()
-        local runCode = function()
+        local function runCode()
+            -- estado inicial
             button.Text = "Cargando..."
-            local ok, err = pcall(function()
-                local func = loadstring(scriptData.Code)
-                func()
+            button.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+            -- primero intentar compilar (loadstring/load)
+            local compileOk, compiledOrErr = pcall(function()
+                local loader = loadstring or load
+                return loader(scriptData.Code)
             end)
-            if ok then
+
+            if not compileOk or type(compiledOrErr) ~= "function" then
+                -- compilación fallida
+                button.Text = "Error"
+                button.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+                warn("Error al compilar el script '" .. tostring(scriptData.Name) .. "':", compiledOrErr)
+                task.wait(1.5)
+                button.Text = "Executar"
+                button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+                return
+            end
+
+            -- ejecutar con pcall
+            local execOk, execErr = pcall(function()
+                compiledOrErr()
+            end)
+
+            if execOk then
                 button.Text = "Ejecutado"
                 button.BackgroundColor3 = Color3.fromRGB(80, 140, 80)
             else
                 button.Text = "Error"
-                button.BackgroundColor3 = Color3.fromRGB(140, 60, 60)
-                warn(err)
+                button.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+                warn("Error ejecutando el script '" .. tostring(scriptData.Name) .. "':", execErr)
             end
+
             task.wait(1.2)
             button.Text = "Executar"
             button.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
@@ -354,14 +370,20 @@ for _, s in ipairs(scripts) do
     createScriptCard(s)
 end
 
--- Función de búsqueda
+-- Búsqueda: uso plain=true para evitar problemas con patrones
 searchBox:GetPropertyChangedSignal("Text"):Connect(function()
-    local query = string.lower(searchBox.Text)
+    local query = string.lower(searchBox.Text or "")
     for _, card in ipairs(scrollFrame:GetChildren()) do
         if card:IsA("Frame") then
             local label = card:FindFirstChildOfClass("TextLabel")
-            if label then
-                card.Visible = (query == "" or string.find(string.lower(label.Text), query))
+            if label and label.Text then
+                local nameLower = string.lower(label.Text)
+                if query == "" then
+                    card.Visible = true
+                else
+                    -- plain find para evitar patrones accidentales
+                    card.Visible = (string.find(nameLower, query, 1, true) ~= nil)
+                end
             end
         end
     end
